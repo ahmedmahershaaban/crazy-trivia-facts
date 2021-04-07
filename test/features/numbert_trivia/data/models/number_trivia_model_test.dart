@@ -42,8 +42,7 @@ void main() {
   group('toJson', () {
     test('should return jsonMap', () async {
       // arrange
-      final Map<String, dynamic> jsonMap =
-          tNumberTriviaModel.toJson(tNumberTriviaModel);
+      final Map<String, dynamic> jsonMap = tNumberTriviaModel.toJson();
 
       // act
       final jsonMapMatcher = {'text': 'text test', 'number': 1};

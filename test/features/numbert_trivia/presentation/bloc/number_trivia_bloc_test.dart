@@ -43,7 +43,8 @@ void main() {
   group('GetTriviaForConcreteNumber', () {
     final tNumberString = '1';
     final tNumberParsed = 1;
-    final tNumberTrivia = NumberTrivia(number: 1, text: 'test trivia');
+    final tNumberTrivia =
+        NumberTrivia(number: tNumberParsed, text: 'test trivia');
 
     void setUpMockInputConverterSuccess() =>
         when(mockInputConverter.stringToUnsignedInteger(any))

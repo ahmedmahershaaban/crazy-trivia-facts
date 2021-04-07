@@ -15,22 +15,23 @@ abstract class NumberTriviaLocalDataSource {
   Future<void> cachingData(NumberTriviaModel numberTriviaModel);
 }
 
-const String trivia_number_cached = 'TRIVIA_NUMBER_CACHED';
+const String CACHED_NUMBER_TRIVIA = 'CACHED_NUMBER_TRIVIA';
 
 class NumberTriviaLocalDataSourceImpl implements NumberTriviaLocalDataSource {
   final SharedPreferences sharedPreferences;
 
   NumberTriviaLocalDataSourceImpl({@required this.sharedPreferences});
   @override
-  Future<void> cachingData(NumberTriviaModel numberTriviaModel) {
-    final jsonString = json.encode(numberTriviaModel.toJson(numberTriviaModel));
-    return Future.value(
-        sharedPreferences.setString(trivia_number_cached, jsonString));
+  Future<void> cachingData(NumberTriviaModel triviaToCache) {
+    return sharedPreferences.setString(
+      CACHED_NUMBER_TRIVIA,
+      json.encode(triviaToCache.toJson()),
+    );
   }
 
   @override
   Future<NumberTriviaModel> getCachedDataFromLocalStorage() {
-    final String jsonMap = sharedPreferences.getString(trivia_number_cached);
+    final String jsonMap = sharedPreferences.getString(CACHED_NUMBER_TRIVIA);
     if (jsonMap != null) {
       return Future.value(NumberTriviaModel.fromJson(json.decode(jsonMap)));
     } else {

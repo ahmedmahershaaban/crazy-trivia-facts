@@ -2,14 +2,14 @@ import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
 
 class NumberTrivia extends Equatable {
-  final int number;
   final String text;
+  final int number;
 
   NumberTrivia({
-    @required this.number,
     @required this.text,
+    @required this.number,
   });
 
   @override
-  List<Object> get props => [number, text];
+  List<Object> get props => [text, number];
 }
